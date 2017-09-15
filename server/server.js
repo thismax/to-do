@@ -8,8 +8,8 @@ const app = express();
 app.use('/', express.static(path.resolve(__dirname, '../public')));
 //sync db before listening
 if (!module.parent) {
-  db.User.sync().then( () => {
-    db.Todo.sync.then( () => {
+  db.User.sync().then(() => {
+    db.Todo.sync().then(() => {
       app.listen(3000, () => console.log('listening on port 3000'));
     });
   });

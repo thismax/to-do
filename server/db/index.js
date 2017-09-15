@@ -1,5 +1,8 @@
-const Sequelize = require ('Sequelize');
-const orm = new Sequelize('todos', 'root');
+const Sequelize = require('Sequelize');
+const url = 'postgres://wazmibbz:n09eACFfFuaJXzQX6q34KknUqURA9QDp@tantor.db.elephantsql.com:5432/wazmibbz';
+const orm = new Sequelize(url, {
+  dialect: 'pg'
+});
 
 var User = orm.define(
   'User',
