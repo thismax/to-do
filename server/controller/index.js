@@ -37,16 +37,4 @@ module.exports = {
 
   }
 
-  // users: {
-
-  //   get: function(req, res) {
-  //     db.users
-  //   }
-
-  //   post: function(req, res) {
-  //     db.users
-  //   }
-
-  // }
-
-}
+};
