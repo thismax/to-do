@@ -7,7 +7,7 @@ const orm = new Sequelize(url, {
 var User = orm.define(
   'User',
   {
-    username:  Sequelize.STRING,
+    username:  Sequelize.STRING
   },
   {
     timestamps: false,
@@ -17,16 +17,16 @@ var User = orm.define(
 var Todo = orm.define(
   'Todo',
   {
-    text: Sequelize.STRING,
-    complelted: Sequelize.BOOLEAN,
+    todo: Sequelize.STRING,
+    completed: Sequelize.BOOLEAN
   },
   {
     timestamps: false,
   }
 );
 
-User.hasMany(Todo);
-Todo.belongsTo(User);
+User.hasMany(Todo, {foreignKey: {name: 'user_id', allowNull: false }, onDelete: 'CASCADE'});
+Todo.belongsTo(User, {foreignKey: {name: 'user_id', allowNull: false }, onDelete: 'CASCADE'});
 
 exports.User = User;
 exports.Todo = Todo;
