@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import axios from 'axios'
 import Todos from './Todos';
 import Users from './Users';
 
 class App extends Component {
   constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
+    super(props);
 
   }
-
 
   render() {
     return (
