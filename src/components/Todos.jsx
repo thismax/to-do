@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Todo from './Todo'
 
-const Todos = ({todos}) => {
+const Todos = ({todos, completeTask, deleteTask}) => {
   return (
     <div className="todos">
       {
         todos.data.map((todo, i) => {
-          return (<Todo todo={todo} key={i} />)
+          return (<Todo todo={todo} completeTask={completeTask} deleteTask={deleteTask} key={i} />)
         })
       }
     </div>

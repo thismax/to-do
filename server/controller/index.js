@@ -12,7 +12,6 @@ module.exports = {
     },
 
     post: function(req, res) {
-
       db.Todo.create({
         todo: req.body.todo,
         completed: req.body.completed})
@@ -21,7 +20,33 @@ module.exports = {
       .catch((err) => {
         console.log(err);
       })
-      
+    },
+
+    put: function(req, res) {
+      let id = req.body.id;
+      let completed = !req.body.completed;
+      db.Todo.update(
+        { completed },
+        { where: {id} })
+      .then((todo) => {
+        res.send()
+      })
+      .catch((err)=> {
+        console.log(err);
+      })
+    },
+
+    delete: function(req, res) {
+      console.log('body', req.body)
+      let id = req.body.id 
+      db.Todo.destroy(
+        {where: {id}})
+      .then((success) => {
+        res.send()
+      })
+      .catch((err)=> {
+        console.log(err);
+      })
     }
 
   }
