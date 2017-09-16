@@ -12,7 +12,7 @@ module.exports = {
     },
 
     post: function(req, res) {
-      console.log("here's the req body", req.body);
+
       db.User.findOrCreate({
         where: {
           username: req.body.username
