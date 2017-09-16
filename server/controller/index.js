@@ -5,7 +5,7 @@ module.exports = {
   todos: {
 
     get: function(req, res) {
-      db.Todo.findAll()
+      db.Todo.findAll({order: [['id', 'ASC']]})
       .then((todos)=>{
         res.send(todos);
       });
@@ -37,12 +37,11 @@ module.exports = {
     },
 
     delete: function(req, res) {
-      console.log('body', req.body)
-      let id = req.body.id 
+      let id = req.body.id;
       db.Todo.destroy(
         {where: {id}})
       .then((success) => {
-        res.send()
+        res.send();
       })
       .catch((err)=> {
         console.log(err);

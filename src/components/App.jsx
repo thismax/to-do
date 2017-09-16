@@ -12,7 +12,6 @@ class App extends Component {
     this.onKeyPress = this.onKeyPress.bind(this)
     this.fetch = this.fetch.bind(this);
     this.post = this.post.bind(this);
-    this.update = this.update.bind(this);
     this.completeTask = this.completeTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
@@ -34,30 +33,36 @@ class App extends Component {
       "completed": false
     })
     .then((success) => {
-      console.log('successful post!');
+      this.fetch();
     }).catch((err) => {
       console.error(err);
     });
   }
 
-  update(id, completed) {
+  completeTask(id, completed) {
     axios.put('/todos', 
       {
         "id": id,
         "completed": completed
       }
     ).then((success) => {
-      console.log('successful put!');
+      console.log(success);
       this.fetch();
     }).catch((err) => {
       console.log(err);
     });
   }
 
-  delete(id) {
-    axios.delete('/todos', {id: id})
+  deleteTask(id) {
+    axios({
+      method: 'delete',
+      url: '/todos',
+      data: {
+        'id': id
+      }
+    })
     .then((success) => {
-      console.log('successful delete!');
+      console.log(success);
       this.fetch();
     }).catch((err) => {
       console.log(err);
@@ -67,16 +72,9 @@ class App extends Component {
   onKeyPress(event) {
     if(event.key == 'Enter') { 
       this.post(event.target.value);
+      event.target.value = '';
       this.fetch();
     }
-  }
-
-  completeTask(id, completed) {
-    this.update(id, completed);
-  }
-
-  deleteTask(id) {
-    this.delete(id);
   }
 
   render() {

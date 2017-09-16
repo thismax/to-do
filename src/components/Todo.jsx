@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 const Todo = ({todo, completeTask, deleteTask}) => {
-  console.log(todo);
   return (
     <div className='todo' id={todo.completed ? 'done': null}>
       <span onClick={()=>{completeTask(todo.id, todo.completed)}}>{todo.todo}</span>
