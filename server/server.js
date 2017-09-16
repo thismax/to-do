@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 //middleware
 app.use(bodyParser.json());
-app.use('/', express.static(path.resolve(__dirname, '../src/static')));
+app.use('/', express.static(path.resolve(__dirname, '../static')));
 app.use('/', routes);
 app.use(cors())
 //sync db before listening

@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 const Todo = ({todo}) => {
   return (
-      <span class='todo'>{todo}</span>
+    <div>
+      <span className='todo'>{todo.todo}</span>
+    </div>
   )
 };
 
