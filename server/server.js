@@ -13,10 +13,8 @@ app.use('/', express.static(path.resolve(__dirname, '../static')));
 app.use('/', routes);
 //sync db before listening
 if (!module.parent) {
-  db.User.sync().then(() => {
-    db.Todo.sync().then(() => {
-      app.listen(3000, () => console.log('listening on port 3000'));
-    });
+  db.Todo.sync().then(() => {
+    app.listen(3000, () => console.log('listening on port 3000'));
   });
 }
 

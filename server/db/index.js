@@ -4,16 +4,6 @@ const orm = new Sequelize(url, {
   dialect: 'pg'
 });
 
-var User = orm.define(
-  'User',
-  {
-    username:  Sequelize.STRING
-  },
-  {
-    timestamps: false,
-  }
-);
-
 var Todo = orm.define(
   'Todo',
   {
@@ -25,8 +15,8 @@ var Todo = orm.define(
   }
 );
 
-User.hasMany(Todo, {foreignKey: {name: 'user_id', allowNull: false }, onDelete: 'CASCADE'});
-Todo.belongsTo(User, {foreignKey: {name: 'user_id', allowNull: false }, onDelete: 'CASCADE'});
+// User.hasMany(Todo, {foreignKey: {name: 'user_id', allowNull: false }, onDelete: 'CASCADE'});
+// Todo.belongsTo(User, {foreignKey: {name: 'user_id', allowNull: false }, onDelete: 'CASCADE'});
+// exports.User = User;
 
-exports.User = User;
 exports.Todo = Todo;
