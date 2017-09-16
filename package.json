@@ -26,8 +26,8 @@
     "path": "^0.12.7",
     "pg": "^6.4.2",
     "prop-types": "^15.5.10",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-router": "^2.6.1",
     "sequelize": "^4.8.3",
     "underscore": "^1.8.3"
