@@ -6,34 +6,37 @@ import Users from './Users';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state ={
-      todos: []
+    this.state = {
+      todos: [],
+      ready: false,
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      todos: [
-        {
-          "username": "The Rod",
-          "todo": "kick ass",
-          "completed": false
-        },
-        {
-          "username": "The Rod",
-          "todo": "chew bubblegum",
-          "completed": true
-        }
-      ]
+  fetch() {
+    const context = this;
+    axios.get('/todos')
+    .then((todos) => {
+      console.log(context.state.ready);
+      context.setState({todos, ready: true});
+    }).catch((err) => {
+      console.error(err);
     });
   }
 
   render() {
-    return (
+    if (this.state.ready) {
+      return (
+        <div>
+        <Todos todos={this.state.todos}/>
+        </div>
+      )
+    } else {
+      this.fetch();
+      return (
       <div>
-       <Todos todos={this.state.todos}/>
+      Loading
       </div>
-    )
+      )}
   }
 }
 
